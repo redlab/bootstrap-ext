@@ -135,7 +135,7 @@
   , highlighter: function (item, that) {
       var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
       return item[that.key].replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
-        return '<strong>' + match + '</strong>'
+        return '<strong>' + match + '</strong> '
       }) + item[that.value] 
     }
 
