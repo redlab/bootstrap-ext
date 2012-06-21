@@ -47,6 +47,7 @@
     this.key = this.options.key
     this.value = this.options.value
     this.listener = this.options.listener || this.listener
+    this.displayer = this.options.displayer || this.displayer
     this.listen()
   }
 
@@ -134,11 +135,13 @@
 
   , highlighter: function (item, that) {
       var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-      return item[that.key].replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
-        return '<strong>' + match + '</strong> '
-      }) + item[that.value] 
+      return that.displayer(that, item, item[that.key].replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
+        return '<strong>' + match + '</strong>'
+      }))
     }
-
+  , displayer: function(that, item, highlighted) {
+	return highlighted + ' ' + item[that.value] 
+   }
   , render: function (items) {
       var that = this
 
