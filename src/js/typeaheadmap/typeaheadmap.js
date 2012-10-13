@@ -1,5 +1,5 @@
 /* =============================================================
- * bootstrap-typeaheadmap.js based on bootstrap-typeahead.js v2.0.3 which you can find at
+ * typeaheadmap.js based on bootstrap-typeahead.js v2.0.3 which you can find at
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
  * =============================================================
  * and is Copyright 2012 Twitter, Inc.
