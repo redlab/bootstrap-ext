@@ -295,7 +295,7 @@
       var $this = $(this)
       if ($this.data('typeaheadmap')) return
       e.preventDefault()
-      $this.typeahead($this.data())
+      $this.typeaheadmap($this.data())
     })
   })
 
