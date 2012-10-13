@@ -18,4 +18,4 @@ To allow either input to automagically show the correct code or city there is an
 		    "listener": function(k, v) {
 			$("#postalcodes").val(v)
 		})
-
+The size of the result list can be changed with the "items" parameter.
