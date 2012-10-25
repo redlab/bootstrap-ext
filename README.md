@@ -3,7 +3,7 @@ bootstrap-ext
 
 Typeaheadmap
 ======
-A make over of <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">bootstraps typeahead</a> that supports an array of objects, a listener function hook to receive selected data, and a customizable displayer function. See an example at src/demo/typeaheadmap. The Javascript and CSS file are at src/js/typaheadmap
+A make over of <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">bootstraps typeahead</a> that supports an array of objects, a listener function hook to receive selected data, and a customizable displayer function. See an example at src/demo/typeaheadmap or a <a href="http://redlab.github.com/bootstrap-ext/index.html">live example</a>. The Javascript and CSS file are at src/js/typaheadmap
 
 Consider an example of the cities where the arrayOfObjects is a an array containing objects with cities and postalcodes
 
