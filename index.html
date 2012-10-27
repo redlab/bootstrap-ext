@@ -29,43 +29,56 @@
       </header>
       <section>
         <h1>bootstrap-ext</h1>
-
-<h1>Typeaheadmap</h1>
-<p><a href="typeaheadmap.html">View County/Capital Demo</a></p>
-<p>A make over of <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">bootstraps typeahead</a> that supports an array of objects, a listener function hook to receive selected data, and a customizable displayer function. See an example at src/demo/typeaheadmap. The Javascript and CSS file are at src/js/typaheadmap</p>
-
-<p>Consider an example of the cities where the arrayOfObjects is a an array containing objects with cities and postalcodes</p>
-
-<div class="highlight"><pre><span class="p">{</span> <span class="s2">"code"</span><span class="o">:</span><span class="s2">"9000"</span><span class="p">,</span> <span class="s2">"city"</span><span class="o">:</span><span class="s2">"Gent"</span><span class="p">}</span>
-</pre></div>
-
-<p>the javascript for the postalcode inputbox would be like</p>
-
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#postalcodes"</span><span class="p">).</span><span class="nx">typeaheadmap</span><span class="p">({</span> <span class="s2">"source"</span><span class="o">:</span><span class="nx">arrayOfObjects</span><span class="p">,</span> <span class="s2">"key"</span><span class="o">:</span> <span class="s2">"code"</span><span class="p">,</span> <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"city"</span><span class="p">})</span>
-</pre></div>
-
-<p>for the citynames inputbox.</p>
-
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#cities"</span><span class="p">).</span><span class="nx">typeaheadmap</span><span class="p">({</span> <span class="s2">"source"</span><span class="o">:</span><span class="nx">arrayOfObjects</span><span class="p">,</span> <span class="s2">"key"</span><span class="o">:</span> <span class="s2">"city"</span><span class="p">,</span> <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"code"</span><span class="p">})</span>
-</pre></div>
-
-<p>To allow either input to automagically show the correct code or city there is an option to add listener function. The listener is called on change of the typeaheadmap. Then it becomes</p>
-
-<div class="highlight"><pre> <span class="nx">$</span><span class="p">(</span><span class="s2">"#cities"</span><span class="p">).</span><span class="nx">typeaheadmap</span><span class="p">({</span> <span class="s2">"source"</span><span class="o">:</span><span class="nx">arrayOfObjects</span><span class="p">,</span> 
-    <span class="s2">"key"</span><span class="o">:</span> <span class="s2">"city"</span><span class="p">,</span> 
-    <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"code"</span><span class="p">,</span> 
-    <span class="s2">"listener"</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">"#postalcodes"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
-<span class="p">})</span>
-</pre></div>
-
-<p>The size of the result list can be changed with the "items" parameter.</p>
+        <p>Extensions of bootstrap.</p>
+        <menu>
+        	<li><a href="#Typeaheadmap">Typeaheadmap</a></li>
+        	<li><a href="#minified">Creating a minified version</a></li>
+        </menu>
+      </section>
+      <section id="Typeaheadmap">
+      	<h1>Typeaheadmap</h1>
+		<p><a href="typeaheadmap.html">View County/Capital Demo</a></p>
+		<p>A make over of <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">bootstraps typeahead</a> that supports an array of objects, a listener function hook to receive selected data, and a customizable displayer function. See an example at src/demo/typeaheadmap. The Javascript and CSS file are at src/js/typaheadmap</p>
+		
+		<p>Consider an example of the cities where the arrayOfObjects is a an array containing objects with cities and postalcodes</p>
+		
+		<div class="highlight"><pre><span class="p">{</span> <span class="s2">"code"</span><span class="o">:</span><span class="s2">"9000"</span><span class="p">,</span> <span class="s2">"city"</span><span class="o">:</span><span class="s2">"Gent"</span><span class="p">}</span>
+		</pre></div>
+		
+		<p>the javascript for the postalcode inputbox would be like</p>
+		
+		<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#postalcodes"</span><span class="p">).</span><span class="nx">typeaheadmap</span><span class="p">({</span> <span class="s2">"source"</span><span class="o">:</span><span class="nx">arrayOfObjects</span><span class="p">,</span> <span class="s2">"key"</span><span class="o">:</span> <span class="s2">"code"</span><span class="p">,</span> <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"city"</span><span class="p">})</span>
+		</pre></div>
+		
+		<p>for the citynames inputbox.</p>
+		
+		<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#cities"</span><span class="p">).</span><span class="nx">typeaheadmap</span><span class="p">({</span> <span class="s2">"source"</span><span class="o">:</span><span class="nx">arrayOfObjects</span><span class="p">,</span> <span class="s2">"key"</span><span class="o">:</span> <span class="s2">"city"</span><span class="p">,</span> <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"code"</span><span class="p">})</span>
+		</pre></div>
+		
+		<p>To allow either input to automagically show the correct code or city there is an option to add listener function. The listener is called on change of the typeaheadmap. Then it becomes</p>
+		
+		<div class="highlight"><pre> <span class="nx">$</span><span class="p">(</span><span class="s2">"#cities"</span><span class="p">).</span><span class="nx">typeaheadmap</span><span class="p">({</span> <span class="s2">"source"</span><span class="o">:</span><span class="nx">arrayOfObjects</span><span class="p">,</span> 
+		    <span class="s2">"key"</span><span class="o">:</span> <span class="s2">"city"</span><span class="p">,</span> 
+		    <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"code"</span><span class="p">,</span> 
+		    <span class="s2">"listener"</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+		    <span class="nx">$</span><span class="p">(</span><span class="s2">"#postalcodes"</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+		<span class="p">})</span>
+		</pre></div>
+		
+		<p>The size of the result list can be changed with the "items" parameter.</p>
+      </section>
+      <section id="minified">
+      	<h1>Creating a minified version</h1>
+      	<p>If you want you can create a minified version using the provided pom file. To use this you need to have <a href="http://maven.apache.org/run-maven/index.html">Maven 3</a> installed.<p>
+      	<p>In the folder where the pom file is, run <pre>mvn compile</pre> and in the folder release, you'll find the minified and normal versions of the css and js files. The compressing is done with yui compressor.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/redlab">redlab</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
+    
+    
     <script src="javascripts/scale.fix.js"></script>
     <script type="text/javascript">
 
