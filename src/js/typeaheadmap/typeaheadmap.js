@@ -24,6 +24,7 @@
  * The combination of the key and value is shown in the dropdown.
  * Optionally provide a listener to listen to the selected 'key' and 'value'.
  * https://github.com/redlab/bootstrap-ext
+ * @version 1.0.0
 */
 
 !function($){
