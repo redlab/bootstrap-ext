@@ -55,7 +55,7 @@
 		<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">"#cities"</span><span class="p">).</span><span class="nx">typeaheadmap</span><span class="p">({</span> <span class="s2">"source"</span><span class="o">:</span><span class="nx">arrayOfObjects</span><span class="p">,</span> <span class="s2">"key"</span><span class="o">:</span> <span class="s2">"city"</span><span class="p">,</span> <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"code"</span><span class="p">})</span>
 		</pre></div>
 		
-		<p>To allow either input to automagically show the correct code or city there is an option to add listener function. The listener is called on change of the typeaheadmap. Then it becomes</p>
+		<p>To allow either input to automagically show the correct code or city there is an option to add a listener function. The listener is called on change of the typeaheadmap. Then it becomes</p>
 		
 		<div class="highlight"><pre> <span class="nx">$</span><span class="p">(</span><span class="s2">"#cities"</span><span class="p">).</span><span class="nx">typeaheadmap</span><span class="p">({</span> <span class="s2">"source"</span><span class="o">:</span><span class="nx">arrayOfObjects</span><span class="p">,</span> 
 		    <span class="s2">"key"</span><span class="o">:</span> <span class="s2">"city"</span><span class="p">,</span> 
@@ -65,7 +65,11 @@
 		<span class="p">})</span>
 		</pre></div>
 		
-		<p>The size of the result list can be changed with the "items" parameter.</p>
+		<p>Optional:</p>
+		<ul>
+			<li>add 'notfound' to the options map.  If notfound is set as an Array of objects with the same structure as those in the "source" parameter, this array is used when autocomplete did not return any results. <pre class="highlight">"notfound": new Array({'k' :"Capital Does Not Exist?", 'v': "",'d': "You typed something that is not in the list"})</li>
+			<li>set 'items' as int to set the maximum size of the displayed results</li>
+		</ul>
       </section>
       <section id="minified">
       	<h1>Creating a minified version</h1>
