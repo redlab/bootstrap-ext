@@ -2,7 +2,7 @@
 <head>
 <meta charset="UTF-8" >
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/typeaheadmap/bootstrap-typeaheadmap.js"></script>
+<script type="text/javascript" src="../../js/typeaheadmap/typeaheadmap.js"></script>
 <script type="text/javascript" src="listofcapitals.js"></script>
 <link href="../bootstrap.min.css" rel="stylesheet">
 <link href="../../js/typeaheadmap/typeaheadmap.css" rel="stylesheet">
@@ -18,16 +18,17 @@
 			<div class="span12">
 				<h3>Typeaheadmap</h3>
 				<p>A make over of <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">bootstraps typeahead</a> that supports an array of objects, a listener function hook to receive selected data, and a customizable displayer function</p>
-				<p>In this example you can start typing a country in the country box, see the dropdown with the country and capital. Upon selection, the capital is set in the capital input box. The displaying and list size is altered from the defaults of typeaheadmap.(Same goes for the capitalbox)</p>
+				<p>In this example you can start typing a country in the country box, see the dropdown with the country and capital. Upon selection, the capital is set in the capital input box. The displaying and list size is altered from the defaults of typeaheadmap.</p>
+				<p>The capitalbox also has a entry for when you typed something that does not exist
 			</div>
 		</div>
-		<div class="row">
+		<div class="row"> 
 			<div class="span4 well">
 				<label for="values">Country</label><input id="values" type="text" placeholder="Start typing" tabindex="0" class="myinput"/>
 				<label for="keys">Capitals</label><input id="keys" type="text"  placeholder="Start typing" tabindex="1" class="myinput"/>
 			</div>
 			<div class="span4">
-				<span>Description (if available)</span>
+				<span>Description ( if available, e.g. for capital Road Town )</span>
 				<div class="well"><span id="description"></span></div>
 			</div>
 		</div>
@@ -41,6 +42,7 @@
 	$(document).ready(function() {
 	    $("#keys").typeaheadmap({
 		"source" : listofcapitals,
+		"notfound": new Array({'k' :"Capital Does Not Exist?", 'v': "",'d': "You typed something that is not in the list"}),
 		"key" : "k",
 		"value" : "v",
 		"items": 11,
@@ -60,6 +62,7 @@
 		"source" : listofcapitals,
 		"key" : "v",
 		"value" : "k",
+		//"notfound": new Array({'k' :"", 'v': "Country Does Not Exist",'d': "You typed something that is not in the list"}),
 		"items": 17,
 		"listener" : function(k, v) {
 		    $("#keys").val(v)

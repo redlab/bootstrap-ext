@@ -24,7 +24,9 @@
  * The combination of the key and value is shown in the dropdown.
  * Optionally provide a listener to listen to the selected 'key' and 'value'.
  * https://github.com/redlab/bootstrap-ext
- * @version 1.0.0
+ * 
+ * 
+ * @version 1.0.1
 */
 
 !function($){
@@ -49,6 +51,7 @@
     this.value = this.options.value
     this.listener = this.options.listener || this.listener
     this.displayer = this.options.displayer || this.displayer
+    this.notfound = this.options.notfound || new Array()
     this.listen()
   }
 
@@ -109,7 +112,15 @@
       items = this.sorter(items)
 
       if (!items.length) {
-        return this.shown ? this.hide() : this
+        if (this.shown) {
+            if (!this.notfound.length) {
+        	return this.hide();
+            } else {
+        	return this.render(this.notfound).show()
+            }
+        } else {
+            return this
+        }
       }
 
       return this.render(items.slice(0, this.options.items)).show()
