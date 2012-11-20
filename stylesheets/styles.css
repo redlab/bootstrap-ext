@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
   margin:0 0 20px;
 }
 
-p, ul, ol, table, pre, dl {
+p, ul, ol, table, pre, dl, menu {
   margin:0 0 20px;
 }
 
@@ -127,7 +127,6 @@ header li {
   border-right:1px solid #d2d2d2;
   height:40px;
 }
-
 header ul a {
   line-height:1;
   font-size:11px;
@@ -137,7 +136,6 @@ header ul a {
   padding-top:6px;
   height:40px;
 }
-
 strong {
   color:#222;
   font-weight:700;
