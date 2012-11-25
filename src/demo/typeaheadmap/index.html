@@ -55,7 +55,11 @@
 		    })
 		},
 		"displayer": function(that, item, highlighted) {
+		    if (that.value != "") {
+			    return highlighted;			
+		    } else {
 		    return highlighted + ' (' + item[that.value] + ' )' 
+		    }
 		}
 	    })
 	    $("#values").typeaheadmap({
@@ -73,7 +77,11 @@
 		    })
 		},
 		"displayer": function(that, item, highlighted) {
-			return highlighted + ' (' + item[that.value] + ' )' 
+		    if (that.value != "") {
+			    return highlighted;			
+		    } else {
+		    return highlighted + ' (' + item[that.value] + ' )' 
+		    } 
 		   }
 	    })
 	});
