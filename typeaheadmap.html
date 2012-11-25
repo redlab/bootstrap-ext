@@ -58,7 +58,11 @@
 		    })
 		},
 		"displayer": function(that, item, highlighted) {
+		    if (that.value != "") {
+			    return highlighted;			
+		    } else {
 		    return highlighted + ' (' + item[that.value] + ' )' 
+		    }
 		}
 	    })
 	    $("#values").typeaheadmap({
