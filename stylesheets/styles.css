@@ -46,8 +46,9 @@ a small {
 }
 
 .wrapper {
-  width:860px;
+  width: auto;
   margin:0 auto;
+  padding: 10 12 12 0;
 }
 
 blockquote {
@@ -96,9 +97,8 @@ img {
 }
 
 header {
-  width:270px;
-  float:left;
-  position:fixed;
+  width:auto;
+  clear: both;
 }
 
 header ul {
@@ -158,8 +158,7 @@ header ul a strong {
 }
 
 section {
-  width:500px;
-  float:right;
+  width:auto;
   padding-bottom:50px;
 }
 
@@ -175,9 +174,8 @@ hr {
 }
 
 footer {
-  width:270px;
-  float:left;
-  position:fixed;
+  width:100%;
+  clear: both;
   bottom:50px;
 }
 

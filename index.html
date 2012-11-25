@@ -21,20 +21,12 @@
         <p class="view"><a href="https://github.com/redlab/bootstrap-ext">View the Project on GitHub <small>redlab/bootstrap-ext</small></a></p>
 
 
-        <ul>
+        <ul >
           <li><a href="https://github.com/redlab/bootstrap-ext/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/redlab/bootstrap-ext/tarball/master">Download <strong>TAR Ball</strong></a></li>
           <li><a href="https://github.com/redlab/bootstrap-ext">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
-      <section>
-        <h1>bootstrap-ext</h1>
-        <p>Extensions of bootstrap.</p>
-        <menu>
-        	<li><a href="#Typeaheadmap">Typeaheadmap</a></li>
-        	<li><a href="#minified">Creating a minified version</a></li>
-        </menu>
-      </section>
       <section id="Typeaheadmap">
       	<h1>Typeaheadmap</h1>
 		<p><a href="typeaheadmap.html">View County/Capital Demo</a></p>
@@ -67,8 +59,21 @@
 		
 		<p>Optional:</p>
 		<ul>
-			<li>add 'notfound' to the options map.  If notfound is set as an Array of objects with the same structure as those in the "source" parameter, this array is used when autocomplete did not return any results. <pre class="highlight">"notfound": new Array({'k' :"Capital Does Not Exist?", 'v': "",'d': "You typed something that is not in the list"})</li>
+			<li>add 'notfound' to the options map.  If notfound is set as an Array of objects with the same structure as those in the "source" parameter, this array is used when autocomplete did not return any results. <br />
+			<pre class="highlighter">"notfound": new Array({'k' :"Capital Does Not Exist?", 'v': "",'d': "You typed something that is not in the list"})</pre></li>
 			<li>set 'items' as int to set the maximum size of the displayed results</li>
+			<li>
+				add 'displayer' to customize the output<br />
+				<pre class="highlighter">
+"displayer": function(that, item, highlighted) {
+    if (item[that.value] != "") {
+	    return highlighted;			
+    } else {
+    return highlighted + ' (' + item[that.value] + ' )' 
+    }
+}
+				</pre>
+			</li>
 		</ul>
       </section>
       <section id="minified">
