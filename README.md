@@ -34,4 +34,24 @@ To allow either input to automagically show the correct code or city there is an
 })
 ```
 
-The size of the result list can be changed with the "items" parameter.
+Optional:
+
+* add 'notfound' to the options map. If notfound is set as an Array of objects with the same structure as those in the "source" parameter, this array is used when autocomplete did not return any results. 
+
+```javascript
+"notfound": new Array({'k' :"Capital Does Not Exist?", 'v': "",'d': "You typed something that is not in the list"})
+```
+
+* set 'items' as int to set the maximum size of the displayed results
+* add 'displayer' to customize the output
+
+```javascript
+"displayer": function(that, item, highlighted) {
+    if (item[that.value] != "") {
+	    return highlighted;			
+    } else {
+    return highlighted + ' (' + item[that.value] + ' )' 
+    }
+}
+```
+				
