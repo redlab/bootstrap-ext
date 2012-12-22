@@ -1,5 +1,5 @@
 /* =============================================================
- * typeaheadmap.js based on bootstrap-typeahead.js v2.0.3 which you can find at
+ * typeaheadmap.js based on bootstrap-typeahead.js v2.2.2 which you can find at
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
  * =============================================================
  * and is Copyright 2012 Twitter, Inc.
@@ -26,7 +26,7 @@
  * https://github.com/redlab/bootstrap-ext
  * 
  * 
- * @version 1.0.1
+ * @version 1.0.2
 */
 
 !function($){
@@ -44,7 +44,7 @@
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
     this.updater = this.options.updater || this.updater
-    this.$menu = $(this.options.menu).appendTo('body')
+    this.$menu = $(this.options.menu)
     this.source = this.options.source
     this.shown = false
     this.key = this.options.key
@@ -74,16 +74,15 @@
     }
 
   , show: function () {
-      var pos = $.extend({}, this.$element.offset(), {
+      var pos = $.extend({}, this.$element.position(), {
         height: this.$element[0].offsetHeight
       })
 
-      this.$menu.css({
+      this.$menu.insertAfter(this.$element).css({
         top: pos.top + pos.height
       , left: pos.left
-      })
+      }).show()
 
-      this.$menu.show()
       this.shown = true
       return this
     }
@@ -101,11 +100,17 @@
 
       this.query = this.$element.val()
 
-      if (!this.query) {
+      if (!this.query || this.query.length < this.options.minLength) {
         return this.shown ? this.hide() : this
       }
+	  items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
 
-      items = $.grep(this.source, function (item) {
+      return items ? this.process(items) : this
+  }
+
+  , process: function (items) {
+	  var that = this
+      items = $.grep(items, function (item) {
         return that.matcher(item)
       })
 
@@ -197,8 +202,8 @@
         .on('keypress', $.proxy(this.keypress, this))
         .on('keyup',    $.proxy(this.keyup, this))
 
-      if ($.browser.webkit || $.browser.msie) {
-        this.$element.on('keydown', $.proxy(this.keypress, this))
+      if (this.eventSupported('keydown')) {
+        this.$element.on('keydown', $.proxy(this.keydown, this))
       }
 
       this.$menu
@@ -206,10 +211,56 @@
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
     }
 
+  , eventSupported: function(eventName) {
+      var isSupported = eventName in this.$element
+      if (!isSupported) {
+        this.$element.setAttribute(eventName, 'return;')
+        isSupported = typeof this.$element[eventName] === 'function'
+      }
+      return isSupported
+    }
+
+  , move: function (e) {
+      if (!this.shown) return
+
+      switch(e.keyCode) {
+        case 9: // tab
+        case 13: // enter
+        case 27: // escape
+          e.preventDefault()
+          break
+
+        case 38: // up arrow
+          e.preventDefault()
+          this.prev()
+          break
+
+        case 40: // down arrow
+          e.preventDefault()
+          this.next()
+          break
+      }
+
+      e.stopPropagation()
+    }
+
+  , keydown: function (e) {
+      this.suppressKeyPressRepeat = ~$.inArray(e.keyCode, [40,38,9,13,27])
+      this.move(e)
+    }
+
+  , keypress: function (e) {
+      if (this.suppressKeyPressRepeat) return
+      this.move(e)
+    }
+
   , keyup: function (e) {
       switch(e.keyCode) {
         case 40: // down arrow
         case 38: // up arrow
+        case 16: // shift
+        case 17: // ctrl
+        case 18: // alt
           break
 
         case 9: // tab
@@ -230,32 +281,6 @@
       e.stopPropagation()
       e.preventDefault()
   }
-
-  , keypress: function (e) {
-      if (!this.shown) return
-
-      switch(e.keyCode) {
-        case 9: // tab
-        case 13: // enter
-        case 27: // escape
-          e.preventDefault()
-          break
-
-        case 38: // up arrow
-          if (e.type != 'keydown') break
-          e.preventDefault()
-          this.prev()
-          break
-
-        case 40: // down arrow
-          if (e.type != 'keydown') break
-          e.preventDefault()
-          this.next()
-          break
-      }
-
-      e.stopPropagation()
-    }
 
   , blur: function (e) {
       var that = this
@@ -279,6 +304,8 @@
   /* TYPEAHEADMAP PLUGIN DEFINITION
    * =========================== */
 
+  var old = $.fn.typeaheadmap
+
   $.fn.typeaheadmap = function (option) {
     return this.each(function () {
       var $this = $(this)
@@ -294,21 +321,30 @@
   , items: 8
   , menu: '<ul class="typeaheadmap dropdown-menu"></ul>'
   , item: '<li><a href="#"></a></li>'
+  , minLength: 1
   }
 
   $.fn.typeaheadmap.Constructor = Typeaheadmap
+
+ /* TYPEAHEADMAP NO CONFLICT
+  * =================== */
+
+  $.fn.typeaheadmap.noConflict = function () {
+    $.fn.typeaheadmap = old
+    return this
+  }
+
 
 
  /* TYPEAHEADMAP DATA-API
   * ================== */
 
-  $(function () {
-    $('body').on('focus.typeaheadmap.data-api', '[data-provide="typeaheadmap"]', function (e) {
+    $(document).on('focus.typeaheadmap.data-api', '[data-provide="typeaheadmap"]', function (e) {
       var $this = $(this)
       if ($this.data('typeaheadmap')) return
       e.preventDefault()
       $this.typeaheadmap($this.data())
     })
-  })
+
 
 }(window.jQuery);
