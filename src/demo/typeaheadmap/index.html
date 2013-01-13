@@ -63,7 +63,7 @@
 		}
 	    })
 	    $("#values").typeaheadmap({
-		"source" : listofcapitals,
+		"source" : function(q, process) { process(listofcapitals)},
 		"key" : "v",
 		"value" : "k",
 		//"notfound": new Array({'k' :"", 'v': "Country Does Not Exist",'d': "You typed something that is not in the list"}),
