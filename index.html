@@ -76,6 +76,63 @@
 			</li>
 		</ul>
       </section>
+      <section id="optionobject">
+	shameless copy of typeaheads options table
+	<table class="table table-bordered table-striped">
+              <thead>
+               <tr>
+                 <th style="width: 100px;">Name</th>
+                 <th style="width: 50px;">type</th>
+                 <th style="width: 100px;">default</th>
+                 <th>description</th>
+               </tr>
+              </thead>
+              <tbody>
+                <tr>
+                 <td>source</td>
+                 <td>array, function</td>
+                 <td>[ ]</td>
+                 <td>The data source to query against. May be an array of strings or a function. The function is passed two arguments, the <code>query</code> value in the input field and the <code>process</code> callback. The function may be used synchronously by returning the data source directly or asynchronously via the <code>process</code> callback's single argument.</td>
+               </tr>
+               <tr>
+                 <td>items</td>
+                 <td>number</td>
+                 <td>8</td>
+                 <td>The max number of items to display in the dropdown.</td>
+               </tr>
+               <tr>
+                 <td>minLength</td>
+                 <td>number</td>
+                 <td>1</td>
+                 <td>The minimum character length needed before triggering autocomplete suggestions</td>
+               </tr>
+               <tr>
+                 <td>matcher</td>
+                 <td>function</td>
+                 <td>case insensitive</td>
+                 <td>The method used to determine if a query matches an item. Accepts a single argument, the <code>item</code> against which to test the query. Access the current query with <code>this.query</code>. Return a boolean <code>true</code> if query is a match.</td>
+               </tr>
+               <tr>
+                 <td>sorter</td>
+                 <td>function</td>
+                 <td>exact match,<br> case sensitive,<br> case insensitive</td>
+                 <td>Method used to sort autocomplete results. Accepts a single argument <code>items</code> and has the scope of the typeahead instance. Reference the current query with <code>this.query</code>.</td>
+               </tr>
+               <tr>
+                 <td>updater</td>
+                 <td>function</td>
+                 <td>returns selected item</td>
+                 <td>The method used to return selected item. Accepts a single argument, the <code>item</code> and has the scope of the typeahead instance.</td>
+               </tr>
+               <tr>
+                 <td>highlighter</td>
+                 <td>function</td>
+                 <td>highlights all default matches</td>
+                 <td>Method used to highlight autocomplete results. Accepts a single argument <code>item</code> and has the scope of the typeahead instance. Should return html.</td>
+               </tr>
+              </tbody>
+            </table>
+      </section>
       <section id="minified">
       	<h1>Creating a minified version</h1>
       	<p>If you want you can create a minified version using the provided pom file. To use this you need to have <a href="http://maven.apache.org/run-maven/index.html">Maven 3</a> installed.<p>
