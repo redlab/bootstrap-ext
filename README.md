@@ -55,3 +55,4 @@ Optional:
 }
 ```
 				
+* set the source as an object array or a function (function receives the current input from box and the process method to which you pass the object array.
