@@ -56,3 +56,12 @@ Optional:
 ```
 				
 * set the source as an object array or a function (function receives the current input from box and the process method to which you pass the object array.
+* use the source with an ajax request
+```javascript
+"source" : function(q, process) { 
+     $.ajax({url: yourfetchurl+'?q='+q, 
+               dataType: 'json',
+               success: function(data) { process(fetcheddata)  }
+     })
+},
+```
