@@ -74,6 +74,17 @@
 }
 				</pre>
 			</li>
+			<li>
+				use the source with an ajax request<br />
+				<pre class="highlighter">
+"source" : function(q, process) { 
+     $.ajax({url: yourfetchurl+'?q='+q, 
+               dataType: 'json',
+               success: function(data) { process(fetcheddata)  }
+     })
+}				</pre>
+				
+			</li>
 		</ul>
       </section>
       <section id="optionobject">
